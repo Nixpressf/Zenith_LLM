@@ -1,0 +1,254 @@
+.chat-container {
+  position: relative; /* Make the container a positioning context for the button */
+  max-width: 600px;
+  margin: 40px auto; // Added some top/bottom margin
+text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; // Modern font
+padding: 30px;
+  background-color: #f8f9fa; // Light background
+border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); // Subtle shadow
+
+.clear-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 8px 12px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background-color: #ccc;
+  }
+}
+
+  .dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+
+  h1 {
+    color: #2c3e50; // Darker heading color
+  margin-bottom: 20px;
+  }
+
+  .chat-box {
+    border: 1px solid #e0e0e0; // Lighter border
+  border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; // Slightly increased gap
+  padding: 15px;
+    max-height: 400px; // Increased max height
+  overflow-y: auto;
+    background-color: #fff; // White background for chat box
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); // Inner shadow
+
+  // Scrollbar styling (for Webkit browsers)
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+    &::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #aaa;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 12px 18px; // Increased padding
+    border-radius: 20px;
+      word-wrap: break-word;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); // Subtle message shadow
+    transition: transform 0.2s ease-in-out; // Transition for potential hover effect
+
+    &:hover {
+      transform: scale(1.01); // Slight scale on hover (optional)
+    }
+    }
+
+    .user {
+      align-self: flex-end;
+      text-align: left;
+      background-color: #007bff;
+      color: white;
+      border-radius: 20px 20px 5px 20px; // Slightly different border radius for distinction
+    }
+
+    .bot {
+      align-self: flex-start;
+      text-align: left;
+      background-color: #e0e0e0;
+      color: #333; // Darker text for better readability
+    border-radius: 20px 20px 20px 5px; // Slightly different border radius for distinction
+    }
+  }
+
+
+  .input-area {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+
+    input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease-in-out;
+
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Subtle focus shadow
+      }
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05); // Slight scale on hover
+      }
+
+      &:active {
+        transform: scale(0.98); // Slight shrink on click
+      }
+    }
+  }
+}
+
+// Animation for new messages (example)
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-box .message {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+// Dark Mode Styles
+   body.dark-mode {
+     background-color: #1e1e1e;
+     color: #f8f8f2;
+
+     .chat-container {
+       background-color: #282a36;
+       box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+
+       h1 {
+         color: #f8f8f2;
+
+         &:last-of-type {
+           color: #ff79c6;
+         }
+       }
+
+       .clear-button,
+       .dark-mode-toggle {
+         background-color: #44475a;
+         color: #f8f8f2;
+         border: 1px solid #6272a4;
+
+         &:hover {
+           background-color: #6272a4;
+         }
+       }
+
+       .chat-box {
+         background-color: #44475a;
+         color: #f8f8f2;
+         border-color: #6272a4;
+         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+
+         &::-webkit-scrollbar-track {
+           background-color: #6272a4;
+         }
+
+         &::-webkit-scrollbar-thumb {
+           background-color: #8be9fd;
+         }
+
+         &::-webkit-scrollbar-thumb:hover {
+           background-color: #a4f0ff;
+         }
+
+         .message {
+           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+         }
+
+         .user {
+           background-color: #6272a4;
+           color: #f8f8f2;
+         }
+
+         .bot {
+           background-color: #3b3d48;
+           color: #f8f8f2;
+         }
+       }
+
+       .input-area {
+         border-top-color: #6272a4;
+
+         input {
+           background-color: #44475a;
+           color: #f8f8f2;
+           border-color: #6272a4;
+
+           &:focus {
+             border-color: #8be9fd;
+             box-shadow: 0 0 5px rgba(139, 233, 253, 0.5);
+           }
+         }
+
+         button {
+           background-color: #8be9fd;
+           color: #282a36;
+
+           &:hover {
+             background-color: #a4f0ff;
+           }
+         }
+       }
+     }
+   }
